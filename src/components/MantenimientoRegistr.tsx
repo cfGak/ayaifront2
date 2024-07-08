@@ -102,7 +102,7 @@ const ManteminetoRegistro: React.FC = () => {
       Sueldo Total: ${sueldoTotal}`
     );
 
-    navigate("/");
+    navigate("/mainmenu");
   };
 
   return (

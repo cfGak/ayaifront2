@@ -12,8 +12,8 @@ const App: React.FC = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path ="/mainmenu" element={<MainMenu />} />
+        <Route path="/Login" element={<Login />} />
+        <Route path ="/" element={<MainMenu />} />
         <Route path="/alertform" element={<AlertForm />} />
         <Route path="payment" element={<Payments />} />
         <Route path="manteregi" element={<ManteminetoRegistro />} />
