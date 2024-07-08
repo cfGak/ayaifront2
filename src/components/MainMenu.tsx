@@ -18,23 +18,28 @@ const MainMenu: React.FC = () => {
     navigate("/manteregi");
   };
 
+  const handlePaymentClick = () => {
+    navigate("/payment");
+  };
+
   return (
     <div className="flex flex-col min-h-[100dvh]">
       <header className="bg-[#0077b6] text-white py-4 px-6 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <BanknoteIcon className="h-8 w-8" />
-          <h1 className="text-2xl font-bold">EIC Bank Finanzas</h1>
+          <h1 className="text-2xl font-bold">EIC Bank Finances</h1>
         </div>
         <nav className="flex items-center gap-4">
-          <nav  className="hover:underline" >
-            About
-          </nav>
-          <nav className="hover:underline" >
-            Products
-          </nav>
-          <nav className="hover:underline" >
-            Contact
-          </nav>
+          <nav className="hover:underline">About</nav>
+          <nav className="hover:underline">Products</nav>
+          <nav className="hover:underline">Contact</nav>
+          <button 
+            type="submit"
+            className="bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-500"
+            onClick={() => navigate("/")}
+          >
+          Salir
+          </button>
         </nav>
       </header>
       <main className="flex-1 bg-gray-100 py-12 px-4 md:px-6">
@@ -82,7 +87,7 @@ const MainMenu: React.FC = () => {
             <p className="text-gray-500 mt-2">Sistema de pagos electronicos.</p>
             <button
               className="bg-[#0077b6] text-white rounded-md px-6 py-3 mt-4 hover:bg-[#005a8c] transition-colors"
-              onClick={() => alert('Redireccionando a interfaz de pago electrónico / webpay WIP')}
+              onClick={handlePaymentClick}
             >
               Ir
             </button>

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link"
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import BanknoteIcon from "@/components/icons/BankIcon";
@@ -26,9 +27,11 @@ const Login: React.FC = () => {
     navigate("/mainmenu");
   };
 
+
   const handleUserNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setUserName(event.target.value);
   };
+
   const handleUserPasswordChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
@@ -40,12 +43,19 @@ const Login: React.FC = () => {
       <header className="bg-[#0077b6] text-white py-4 px-6 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <BanknoteIcon className="h-8 w-8" />
-          <h1 className="text-2xl font-bold">EIC Bank Finanzas</h1>
+          <h1 className="text-2xl font-bold">EIC Bank Finances</h1>
         </div>
         <nav className="flex items-center gap-4">
           <nav className="hover:underline">About</nav>
           <nav className="hover:underline">Products</nav>
           <nav className="hover:underline">Contact</nav>
+          <Link
+              href="http://localhost:3000"
+              className="bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-500"
+              prefetch={false}
+            >
+              Salir
+            </Link>
         </nav>
       </header>
       <main className="flex-1 bg-gray-100 py-12 px-4 md:px-6">
