@@ -31,3 +31,15 @@ body {
     text-wrap: balance;
   }
 }
+
+.input-container {
+  display: grid;
+  grid-template-columns: 1fr auto; /* Two columns: 1fr for label, auto for input */
+  align-items: center;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.input-container input {
+  margin-left: 10px; /* Add spacing between input and label */
+}

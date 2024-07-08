@@ -23,7 +23,7 @@ const MainMenu: React.FC = () => {
       <header className="bg-[#0077b6] text-white py-4 px-6 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <BanknoteIcon className="h-8 w-8" />
-          <h1 className="text-2xl font-bold">EIC Bank</h1>
+          <h1 className="text-2xl font-bold">EIC Bank Finanzas</h1>
         </div>
         <nav className="flex items-center gap-4">
           <nav  className="hover:underline" >
@@ -59,7 +59,7 @@ const MainMenu: React.FC = () => {
             <button
               
               className="bg-[#0077b6] text-white rounded-md px-6 py-3 mt-4 hover:bg-[#005a8c] transition-colors"
-              onClick={() => alert('Recordatorio de pago WIP')}
+              onClick={handleAlertClick}
             >
               Ir
             </button>

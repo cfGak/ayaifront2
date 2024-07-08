@@ -63,7 +63,7 @@ const ManteminetoRegistro: React.FC = () => {
       <header className="bg-[#0077b6] text-white py-4 px-6 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <BanknoteIcon className="h-8 w-8" />
-          <h1 className="text-2xl font-bold">EIC Bank</h1>
+          <h1 className="text-2xl font-bold">EIC Bank Finanzas</h1>
         </div>
         <nav className="flex items-center gap-4">
           <nav className="hover:underline">About</nav>
