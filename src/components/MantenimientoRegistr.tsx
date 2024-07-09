@@ -1,5 +1,6 @@
 "use client";
 
+import axios from 'axios';
 import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import BanknoteIcon from "@/components/icons/BankIcon";
@@ -50,8 +51,8 @@ const ManteminetoRegistro: React.FC = () => {
   };
 
   const fetchUserInfo = async (searchTerm: string) => {
-    // Lógica para buscar el usuario en el backend
-    /** 
+    // Lógica para buscar el employeeID en el backend
+    /* 
     const response = await fetch("https://backendpoint/users/${searchTerm}", {
         method: "GET",
         headers: {
@@ -63,10 +64,10 @@ const ManteminetoRegistro: React.FC = () => {
       if (response.ok) {
         const data = await response.json();
         return {
-            name: data.name,
-            email: data.email,
+            name: "Falta unificar base de datos",
+            email: "Falta unificar base de datos",
             accountNumber: data.accountNumber,
-        }; // Return the user data
+        }; // Return the employeeID data
       } else {
         // Handle error cases (e.g., user not found)
         if (response.status === 404) {
@@ -86,9 +87,12 @@ const ManteminetoRegistro: React.FC = () => {
   };
 
 
-  const handleRegistroTrabajadores = () => {
+  const handleRegistroTrabajadores = async () => {
     const AFPtotal = porcentajeAfp + parseFloat(tipoAfp) + porcentajeAfpDefault;
+    const descuentoAFP = sueldoBase * AFPtotal / 100;
     const IsapreTotal = porcentajeIsapre + porcentajeIsapreDefault;
+    const descuentoIsapre = sueldoBase * IsapreTotal / 100;
+    const descuentoSeguros = sueldoBase * porcentajeSeguros / 100;
     const sueldoDescuento = sueldoBase * (AFPtotal + IsapreTotal + porcentajeSeguros) / 100;
     const sueldoTotal = sueldoBase - sueldoDescuento;
     //madar al back el AFPtotal, IsapreTotal, porcentajeSeguros, sueldoTotal (sueldo post descuento)
@@ -97,11 +101,24 @@ const ManteminetoRegistro: React.FC = () => {
       Tipo AFP: ${tipoAfp}, Porcentaje APF adicional: ${porcentajeAfp}, Porcentaje AFP Obligatorio: 10 \n porcentaje AFP Total: ${AFPtotal}\n \n
       Tipo ISAPRE: ${tipoIsapre}, Porcentaje ISAPRE adicional: ${porcentajeIsapre}\n
       Porcentaje ISAPRE Base: 7, porcentaje ISAPRE Total: ${IsapreTotal} \n \n
-      Porcentaje Seguros: ${porcentajeSeguros}\n \n 
+      Porcentaje Seguros: ${porcentajeSeguros}\n \n
       Sueldo Base: ${sueldoBase}, Descuento Total: ${sueldoDescuento}\n
-      Sueldo Total: ${sueldoTotal}`
+      Sueldo Total: ${sueldoTotal}\n
+      Descuento AFP: ${descuentoAFP}, Descuento ISAPRE: ${descuentoIsapre}, Descuento Seguros: ${descuentoSeguros}`
     );
-
+  
+    try {
+      const response = await axios.patch(`${process.env.NEXT_PUBLIC_API_URL}/contributions/${userId}`, {
+        amount_afp: descuentoAFP,
+        amount_isapre: descuentoIsapre,
+        amount_seguro: descuentoSeguros,
+        amount_total: sueldoTotal
+      });
+      console.log(response.data);
+    } catch (error) {
+      console.error('Error updating contribution:', error);
+    }
+  
     navigate("/mainmenu");
   };
 

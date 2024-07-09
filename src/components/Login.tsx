@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from "next/link"
@@ -13,7 +14,7 @@ const Login: React.FC = () => {
   const [userPassword, setUserPassword] = useState<string>("");
 
   const handleLogin = () => {
-    /** 
+    /* 
     if(userName === "" || userPassword === ""){
         alert("Por favor, ingrese un nombre de usuario y contraseña");
         return;
